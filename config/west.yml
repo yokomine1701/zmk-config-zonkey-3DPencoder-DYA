@@ -6,22 +6,22 @@ manifest:
       url-base: https://github.com/cormoran
     - name: badjeff
       url-base: https://github.com/badjeff
-    - name: caksoylar
-      url-base: https://github.com/caksoylar
     - name: kureyakey
       url-base: https://github.com/kureyakey
-    - name: sekigon-gonnoc
-      url-base: https://github.com/sekigon-gonnoc
 
-    
   projects:
+    # DYA: cormoran's ZMK fork. The main line is required by the
+    # runtime-combo / runtime-macro modules below; the v0.3 line has no
+    # branch for them. Needs Zephyr v4.1.0+zmk-fixes.
     - name: zmk
-      remote: cormoran          
-      revision: v0.3-branch+dya
+      remote: cormoran
+      revision: main+dya
       import: app/west.yml
+
+    # Runtime settings over the custom Studio RPC
     - name: zmk-module-ble-management
       remote: cormoran
-      revision: zmk-v0.3.0.0
+      revision: main
     - name: zmk-module-battery-history
       remote: cormoran
       revision: main
@@ -30,10 +30,23 @@ manifest:
       revision: main
     - name: zmk-module-runtime-input-processor
       remote: cormoran
-      revision: zmk-v0.3.0.0
+      revision: main
     - name: zmk-behavior-runtime-sensor-rotate
       remote: cormoran
       revision: main
+
+    # Combos and macros editable from DYA Studio.
+    # zmk-feature-custom-settings is their storage backend.
+    - name: zmk-feature-custom-settings
+      remote: cormoran
+      revision: main
+    - name: zmk-feature-runtime-combo
+      remote: cormoran
+      revision: main
+    - name: zmk-feature-runtime-macro
+      remote: cormoran
+      revision: main
+
     - name: zmk-feature-non-lipo-battery-management
       remote: kureyakey
       revision: main
@@ -41,7 +54,8 @@ manifest:
       remote: badjeff
       revision: main
     - name: zmk-rgbled-widget
-      remote: caksoylar
-      revision: v0.3
+      remote: kureyakey
+      revision: main
+
   self:
     path: config
