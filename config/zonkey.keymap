@@ -36,7 +36,15 @@
 };
 
 / {
-    combos { compatible = "zmk,combos"; };
+    combos {
+        compatible = "zmk,combos";
+
+        esc_key {
+            bindings = <&kp ESC>;
+            key-positions = <0 1>;
+            layers = <0>;
+        };
+    };
 
     mo2: mo2 {
         compatible = "zmk,behavior-mod-morph";
